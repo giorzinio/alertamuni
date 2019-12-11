@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>HISTORIAL LLAMADAS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>{{cliente?.NomCarrera}}</ion-card-subtitle>
+          <ion-card-title>{{cliente?.Nombres}}</ion-card-title>
+        </ion-card-header>
+        <ion-item class="activated">
+          <ion-icon name="cash" slot="start"></ion-icon>
+          <ion-label>Pension: S/. {{cliente?.Pension}}</ion-label>
+        </ion-item>
+        <ion-item class="activated" *ngFor="let calls of listCall">
+          <ion-icon name="call" slot="start"></ion-icon>
+          <ion-label>
+            <h2>{{calls?.FechaLlamada | date: 'MMM d, y, h:mm:ss a'}}</h2>
+            <p>{{calls?.Des_Larga}}</p>
+          </ion-label>          
+        </ion-item>
+        <ion-button shape="round" expand="full"(click)="callCliente()">LLAMAR</ion-button>
+      </ion-card>
+</ion-content>

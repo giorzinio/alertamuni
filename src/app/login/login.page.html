@@ -1,0 +1,18 @@
+<ion-content padding>
+  <div class="img-custom">
+    <img src="assets/imgs/UTK-LOGO.png" />
+    <h1>CALL CENTER UNITEK</h1>
+  </div> 
+  <ion-list class="form">
+    <ion-item>        
+      <ion-label position="floating">Usuario</ion-label>
+      <ion-input [(ngModel)] = "usercreds.codigo"></ion-input>
+    </ion-item>  
+    <ion-item>        
+        <ion-label position="floating">Clave</ion-label>
+        <ion-input [(ngModel)] = "usercreds.clave" type="password"></ion-input>
+      </ion-item>        
+  </ion-list>  
+  <br/>
+  <ion-button expand="block" color="dark" (click)="ingresar()">INGRESAR</ion-button>
+</ion-content>

@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Admision</ion-title>
+    <ion-buttons slot="end" (click)="salir()">
+        <ion-icon name="power"></ion-icon>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="filterItems(searchTerm)" animated></ion-searchbar>
+  <ion-item>
+    <ion-label>Periodo Academico</ion-label>
+    <ion-select placeholder="Ingresar" [(ngModel)]="IdPeriodo" (ionChange)="listarClientes($event)">
+      <ion-select-option *ngFor="let per of listPerAc" [value]="per.Id">{{per.Periodo}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-card *ngFor="let clientes of lisClientes" (click)="verCliente(clientes)">
+    <ion-item>
+      <ion-label>{{clientes.Nombres}}</ion-label>
+      <ion-button fill="outline" slot="end">VER</ion-button>
+    </ion-item>
+    <ion-card-content>
+      <p>{{clientes.NomCarrera}}</p>
+      <p>Turno - {{clientes.Turno}}</p>
+    </ion-card-content>
+    <ion-item>
+      <ion-button color="success" slot="start" fill="outline">
+          S/. {{clientes.Pension}}
+          <ion-icon slot="end" name="cash"></ion-icon>
+      </ion-button>      
+      <ion-button color="warning" slot="end" fill="outline">
+          {{clientes.Llamadas == 0 ? "0" : clientes.Llamadas.length}}
+          <ion-icon slot="end" name="call"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-card>  
+</ion-content>
